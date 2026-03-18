@@ -1,0 +1,150 @@
+# settings
+site_name: صدى حزيران
+site_description: فريق يهدف إلى تعريب رواية Higurashi المرئية
+site_url: https://higurashi-ar.github.io
+repo_url: https://github.com/higurashi-ar
+repo_name: جِت‌هَب
+copyright: >
+  &copy; 2026 جميع الحقوق محفوظة
+site_dir: site
+edit_uri: higurashi-ar.github.io/edit/main/mkdocs/docs
+
+# navigation
+nav:
+  #- الرئيسية: home.md
+  #- التثبيت:
+  #    - تثبيت اللعبة الأساسية: installation/game.md
+  #    - تثبيت باتش التعريب: installation/patch.md
+  #- إرشادات التعريب: contributing/translation-guidelines.md
+  #- كيفية المساهمة: contributing/rules.md
+  #- الأسئلة الشائعة: faq.md
+  #- التبرعات: donation.md
+  #- التواصل: contact.md
+  - دِسكورد: discord.md
+
+# extra
+extra:
+  social:
+    - icon: fontawesome/brands/discord 
+      link: https://discord.gg/lol
+    - icon: fontawesome/brands/youtube 
+      link: https://www.youtube.com/@higurashi-ar
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:contact@higurashi-ar.com
+    - icon: x-twitter
+      link: https://x.com/JunesEcho
+  status:
+    new: جديد
+    deprecated: مهمل
+    draft: مسودة
+  #analytics:
+  #  provider: google
+  #  property: sss
+extra_javascript:
+  - js/custom.js
+  - js/overlayscrollbars.js
+extra_css:
+  - css/admonitions.css
+  - css/status.css
+  - css/custom.css
+  - css/overlayscrollbars.css
+
+# plugins
+plugins:
+  - search
+  - glightbox
+  - git-revision-date-localized:
+      enabled: true
+      enable_creation_date: true
+      type: timeago
+      locale: ar
+      exclude: []
+  - git-committers:
+      enabled: !ENV [CI, false]
+      repository: higurashi-ar/higurashi-ar.github.io
+      docs_path: mkdocs/docs/
+      branch: main
+
+# theme
+theme:
+  name: material
+  language: ar
+  direction: rtl
+  custom_dir: overrides
+  favicon: img/icon.png
+  logo: img/logo.png
+  icon:
+    edit: material/pencil
+    repo: fontawesome/brands/github
+  features:
+    - navigation.footer
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - content.tooltips
+    - content.tabs.link
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      accent: yellow
+      toggle:
+        icon: material/weather-sunny
+        name: بدِّل إلى المظهر الفاتح
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      accent: yellow
+      toggle:
+        icon: material/weather-night
+        name: بدِّل إلى المظهر الداكن
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - tables
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: ['snippets', 'docs']
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - footnotes
+  - toc:
+      title: المحتويات
+      permalink: ⚓︎
+      permalink_title: انسخ المسار
+      toc_depth: 5
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower-ascii
+
+watch:
+  - overrides
+  - snippets
