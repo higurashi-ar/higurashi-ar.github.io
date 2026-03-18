@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h1>404 - الصفحة غير موجودة</h1>
+    <hr style="margin: -2em 0 3em;">
+    <div class="admonition warning" style="margin: -2em 0 2em;">
+        <p class="admonition-title">عذرًا!</p>
+        <p>لا توجد صفحة بهذا المسار في موقعنا. لعلها حُذفت أو غُيِّر عنوانها.<br>
+        تحقق من صحة المسار الذي تحاول الوصول إليه.</p>
+    </div>
+    <span style="text-align: center; display: block;">يبدو أن هذه الصفحة قد غيبتها الشياطين... أو ربما ضللت طريقك في هيناميزاوا. نيباه~☆<br>
+        <img src="{{ config.site_url | e }}img/404.png" draggable="false" />
+    </span>
+{% endblock %}

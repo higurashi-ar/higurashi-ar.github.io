@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block site_meta %}
+	{%- if page.meta -%}
+		{%- set split_content = super().split('<link rel="icon" href="') -%}
+		{{ split_content[0] }}
+		{%- set split_content = split_content[1].split('">', 1) -%}
+		<link rel="icon" href="{{ page.meta.favicon_url | default(config.theme.favicon) | url }}">
+		{%- for content in split_content[1:] -%}
+			{{ content }}
+		{%- endfor -%}
+	{%- endif -%}
+{% endblock %}
+
+{% block extrahead %}
+	{{ super() }}
+	{% if page %}
+		<meta http-equiv="refresh" content="0; url={{ page.meta.redirect_url | default(config.site_url) | e }}" />
+		<script>
+			window.location.replace("{{ page.meta.redirect_url | default(config.site_url) | e }}");
+		</script>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,247 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+    {{ super() }}
+
+    <style>
+        body {
+            --background-image: none !important;
+            --md-default-bg-color: #000000 !important;
+        }
+
+        .md-header {
+            background-color: transparent;
+            background: rgb(0, 0, 0);
+            background: linear-gradient(180deg, rgb(0,0,0) 0%, rgba(0,0,0,0) 100%);
+            position: fixed;
+        }
+        .md-tabs {
+            background-color: transparent;
+        }
+        .md-header--shadow {
+            box-shadow: none;
+        }
+
+        .md-main__inner {
+            margin: 0;
+        }
+
+        .md-content {
+            display: none;
+        }
+
+        @media screen and (min-width: 60em) {
+            .md-sidebar--secondary {
+            display: none;
+            }
+        }
+
+        @media screen and (min-width: 76.25em) {
+            .md-sidebar--primary {
+            display: none;
+            }
+        }
+
+        section.header {
+            background-color: #000000;
+            background-image: url("{{ config.site_url | e }}img/home/header.webp") !important;
+            background-repeat: no-repeat !important;
+            background-attachment: unset;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            box-shadow: 45px -12px 75px 15px black inset;
+        }
+        .video-container {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            box-shadow: 0 0 70px 30px black inset;
+            object-position: center;
+            z-index: -10;
+        }
+        section.higurashi {
+            background-color: #000000;
+            background-image: url("{{ config.site_url | e }}img/home/higurashi.webp") !important;
+            background-repeat: no-repeat !important;
+            background-attachment: unset;
+            background-size: cover;
+            background-position: top;
+            position: relative;
+            box-shadow: 0 0 70px 55px black inset;
+        }
+
+        section:before {
+            position: absolute;
+            z-index: 1;
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            content: "";
+            background-color: rgba(0, 0, 0, 0.65);
+        }
+
+        html {
+            scroll-snap-type: y proximity;
+        }
+
+        section {
+            scroll-snap-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+        section .container {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1rem;
+            z-index: 2;
+            text-align: center;
+            width: 66.66667%;
+        }
+
+        section:not(.header) {
+            opacity: 0;
+            scale: 0.9;
+            animation: fade-in linear forwards;
+            animation-timeline: view();
+            animation-range: entry;
+        }
+
+        @keyframes fade-in {
+            to {
+                scale: 1;
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            font-size: 2rem !important;
+            font-weight: 800 !important;
+            color: #fff;
+            margin-bottom: 0.4em;
+        }
+        p.text {
+            color: #96b6c7;
+        }
+        .row {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .home-button {
+            display: inline-flex;
+            padding: 0.5rem 1.2rem;
+            border-radius: 0.3rem;
+            transition: all 0.2s !important;
+            margin-top: 0.3rem;
+            margin-left: 0.3rem;
+            user-select: none;
+            border: 2px solid transparent;
+            font-weight: 500;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            align-items: center;
+            text-align: center;
+            text-transform: uppercase;
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+
+        .home-button.gray {
+            color: #ffffff;
+            background-color: #282a38;
+            border-color: #282a38;
+        }
+        .home-button.gray:hover {
+            color: #ffffff;
+            background-color: #343648;
+            border-color: #343648;
+        }
+
+        .home-button.red {
+            color: #ffffff;
+            background-color: #cc171e;
+            border-color: #cc171e;
+            box-shadow: 0 8px 16px rgba(255, 23, 68, 0.3);
+        }
+        .home-button.red:hover {
+            color: #ffffff;
+            background-color: #ab171c;
+            border-color: #ab171c;
+            box-shadow: 0 8px 16px rgba(255, 23, 68, 0.3);
+            transition: all 0.2s ease-out;
+        }
+        .home-button.yellow {
+            color: #11171a;
+            background-color: #ffea00;
+            border-color: #ffea00;
+            box-shadow: 0 8px 16px rgba(255, 234, 0, 0.3);  
+        }
+        .home-button.yellow:hover {
+            color: #11171a;
+            background-color: #d9c700;
+            border-color: #ccbb00;
+            box-shadow: 0 8px 20px rgba(255, 234, 0, 0.35);
+            transition: all 0.2s ease-out;
+        }
+        .home-button.blue {
+            color: #ffffff;
+            background-color: #6b75df;
+            border-color: #6b75df;
+            box-shadow: 0 8px 16px rgba(114, 124, 237, 0.3);
+        }
+        .home-button.blue:hover {
+            color: #ffffff;
+            background-color: #575fb4;
+            border-color: #575fb4;
+            box-shadow: 0 8px 20px rgba(114, 124, 237, 0.35);
+            transition: all 0.2s ease-out;
+        }
+    </style>
+
+    <section class="header">
+        <div class="my-typeset container">
+            <h2>صدى حزيران</h2>
+            <p class="text">نهدف إلى إيصال رائعة «هيغوراشي» إلى الجمهور العربي من خلال ترجمة دقيقة ومتقنة، لنعيش معًا غموض أحداث حزيران</p>
+            <div class="row">
+                <!-- <a href="{{ config.site_url | e }}installation/game" class="home-button yellow">
+                    التنصيب <svg style="margin-right: 0.2rem !important;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left ml-2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </a> -->
+                <a href="https://discord.gg/lol" class="home-button blue" target="_blank">
+                    انضم إلى دِسكورد <svg style="margin-right: 0.2rem !important;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users ml-2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="md-typeset higurashi">
+        <div class="container">
+            <h2>مشروع تعريب هيغوراشي</h2>
+            <p class="text">قرية هادئة تُدعى هيناميزاوا... ولكن ما يخفيه صيفها أشد قسوة.</p>
+            <div class="row">
+                <a href="{{ config.site_url | e }}contributing/rules" class="home-button red">
+                    كيفية المساهمة <svg style="margin-right: 0.2rem !important;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left ml-2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </a>
+		<a href="https://x.com/your_handle" class="home-button gray" target="_blank">
+                    حسابنا على إكس <svg style="margin-right: 0.4rem !important;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" class="ml-2"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}{% endblock %}
