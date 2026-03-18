@@ -147,4 +147,4 @@ markdown_extensions:
 
 watch:
   - overrides
-  - snippets
+#  - snippets
