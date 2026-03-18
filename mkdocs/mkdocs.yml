@@ -27,10 +27,10 @@ extra:
   social:
     - icon: fontawesome/brands/discord 
       link: https://discord.gg/lol
-    - icon: fontawesome/brands/youtube 
-      link: https://www.youtube.com/@higurashi-ar
-    - icon: fontawesome/solid/paper-plane
-      link: mailto:contact@higurashi-ar.com
+    #- icon: fontawesome/brands/youtube 
+    #  link: https://www.youtube.com/@higurashi-ar
+    #- icon: fontawesome/solid/paper-plane
+    #  link: mailto:contact@higurashi-ar.com
     - icon: x-twitter
       link: https://x.com/JunesEcho
   status:
