@@ -158,6 +158,16 @@
             line-height: 1.5;
         }
 
+		.home-logo {
+            max-width: 400px; /* Adjust this width to fit your design */
+            width: 100%;      /* Ensures it is responsive on mobile */
+            height: auto;
+            margin-bottom: 1rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .home-button.gray {
             color: #ffffff;
             background-color: #282a38;
@@ -212,7 +222,8 @@
 
     <section class="header">
         <div class="my-typeset container">
-            <h2>صدى حزيران</h2>
+            <img src="{{ config.site_url | e }}img/banner.png" alt="صدى حزيران" class="home-logo">
+			
             <p class="text">نهدف إلى إيصال رائعة «هيغوراشي» إلى الجمهور العربي من خلال ترجمة دقيقة ومتقنة، لنعيش معًا غموض أحداث حزيران</p>
             <div class="row">
                 <!-- <a href="{{ config.site_url | e }}installation/game" class="home-button yellow">
